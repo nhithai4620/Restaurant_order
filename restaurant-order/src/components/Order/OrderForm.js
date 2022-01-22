@@ -1,8 +1,9 @@
 import React,{useState} from 'react';
 import Form from "../../layouts/Form";
-import { ButtonGroup, Grid, InputAdornment, makeStyles, Button as MuiButton } from '@material-ui/core';
-import {Input, Select, Button} from "../../controls";
+import { Grid, InputAdornment, makeStyles, ButtonGroup, Button as MuiButton } from '@material-ui/core';
+import { Input, Select, Button } from "../../controls";
 import ReplayIcon from '@material-ui/icons/Replay';
+import ReorderIcon from '@material-ui/icons/Reorder';
 import RestaurantMenuIcon from '@material-ui/icons/RestaurantMenu';
 
 
@@ -12,7 +13,7 @@ const pMethods = [
     { id: 'Card', title: 'Card' },
 ]
 
-const useStyle = makeStyles(theme =>({
+const useStyles = makeStyles(theme => ({
     adornmentText: {
         '& .MuiTypography-root': {
             color: '#f3b33d',
@@ -20,13 +21,23 @@ const useStyle = makeStyles(theme =>({
             fontSize: '1.5em'
         }
     },
-
+    submitButtonGroup: {
+        backgroundColor: '#f3b33d',
+        color: '#000',
+        margin: theme.spacing(1),
+        '& .MuiButton-label': {
+            textTransform: 'none'
+        },
+        '&:hover': {
+            backgroundColor: '#f3b33d',
+        }
+    }
 }))
 
 const Orderform = (props) => {
     
     const {values, errors, handleInputChange} = props;
-    const classes = useStyle();
+    const classes = useStyles();
 
     return (
         <Form>
@@ -76,7 +87,7 @@ const Orderform = (props) => {
                         >$</InputAdornment>
                     }}
                 />
-                <ButtonGroup>
+                <ButtonGroup className={classes.submitButtonGroup}>
                     <MuiButton 
                         size="large"
                         type="submit"
@@ -89,8 +100,15 @@ const Orderform = (props) => {
                         startIcon={<ReplayIcon/>}
                         >
                     </MuiButton>
+                    
                 </ButtonGroup>
+                <Button
+                            size="large"
+                            startIcon={<ReorderIcon />}
+                        >Orders
+                </Button>
             </Grid>
+          
           </Grid>
         </Form>
     );
