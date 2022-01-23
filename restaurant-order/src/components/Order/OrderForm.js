@@ -1,10 +1,11 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import Form from "../../layouts/Form";
 import { Grid, InputAdornment, makeStyles, ButtonGroup, Button as MuiButton } from '@material-ui/core';
 import { Input, Select, Button } from "../../controls";
 import ReplayIcon from '@material-ui/icons/Replay';
 import ReorderIcon from '@material-ui/icons/Reorder';
 import RestaurantMenuIcon from '@material-ui/icons/RestaurantMenu';
+import {customersdata} from "../../api/index.js";
 
 
 const pMethods = [
@@ -39,6 +40,15 @@ const Orderform = (props) => {
     const {values, errors, handleInputChange} = props;
     const classes = useStyles();
 
+    const customers = customersdata.map(item =>({
+        id : item.customerID,
+        title: item.customerName
+        })
+    )
+    const [customerList, setCustomerList] = useState(customers);
+    
+    
+    console.log(customerList);
     return (
         <Form>
           <Grid container>
@@ -58,13 +68,7 @@ const Orderform = (props) => {
                 <Select label="Customer"
                         name="customerId"
                         onChange = {handleInputChange}
-                        options={[
-                            {id:0, title: "Select"},
-                            {id:1, title: "Customer 1"},
-                            {id:2, title: "Customer 2"},
-                            {id:3, title: "Customer 3"},
-                            {id:4, title: "Customer 4"},
-                        ]}
+                        options={customerList}
                 />
             </Grid>
             <Grid item xs={6}>
