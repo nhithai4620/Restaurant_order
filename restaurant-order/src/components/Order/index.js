@@ -1,6 +1,9 @@
 import React from 'react';
 import OrderForm from './OrderForm';
 import {useForm} from '../../hooks/useForm';
+import { Divider, Grid } from '@material-ui/core';
+import Searchfooditems from './SearchFoodItems';
+import Orderedfooditems from './OrderedFoodItems';
 
 
 
@@ -27,10 +30,20 @@ const Order = () => {
     } = useForm(getFreshModelObject);
 
     return (
-        <div>
-            <OrderForm {...{values, errors, handleInputChange}}/>
-        </div>
-    );
+        
+        <Grid container>
+            <Grid item xs={12}>
+                <OrderForm {...{values, errors, handleInputChange}}/>
+            </Grid>
+            <Grid item xs={6}>
+                <Searchfooditems/>
+            </Grid>
+            <Grid item xs={6}>
+                <Orderedfooditems/>
+            </Grid>
+        </Grid>
+    );        
+            
 }
 
 export default Order;

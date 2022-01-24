@@ -52,3 +52,31 @@ export const customersdata = [
     
 
 ]
+
+export const fooditemsdata = [
+    {
+        "foodItemId": 1,
+        "foodItemName": "Chickend Tenders",
+        "price": 3.5
+    },
+    {
+        "foodItemId": 2,
+        "foodItemName": "Chickend Tenders w/ fries",
+        "price": 4.99
+    },
+    {
+        "foodItemId": 3,
+        "foodItemName": "Chickend Tenders w/ Onion",
+        "price": 5.99
+    },
+    {
+        "foodItemId": 4,
+        "foodItemName": "Grilled Chesses Sandwich",
+        "price": 2.5
+    },
+    {
+        "foodItemId": 5,
+        "foodItemName": "Grilled Chesses Sandwich w/ fries",
+        "price": 3.99
+    }, 
+]
