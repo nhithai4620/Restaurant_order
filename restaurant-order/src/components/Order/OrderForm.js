@@ -47,6 +47,19 @@ const Orderform = (props) => {
     )
     const [customerList, setCustomerList] = useState(customers);
     
+    // useEffect(() => {
+    //     createAPIEndpoint(ENDPIONTS.CUSTOMER).fetchAll()
+    //         .then(res => {
+    //             let customerList = res.data.map(item => ({
+    //                 id: item.customerID,
+    //                 title: item.customerName
+    //             }));
+    //             customerList = [{ id: 0, title: 'Select' }].concat(customerList);
+    //             setCustomerList(customerList);
+    //         })
+    //         .catch(err => console.log(err))
+    // }, [])
+
     
     console.log(customerList);
     return (
