@@ -78,5 +78,20 @@ export const fooditemsdata = [
         "foodItemId": 5,
         "foodItemName": "Grilled Chesses Sandwich w/ fries",
         "price": 3.99
+    },
+    {
+        "foodItemId": 6,
+        "foodItemName": "Soup",
+        "price": 2.99
+    }, 
+    {
+        "foodItemId": 7,
+        "foodItemName": "Hambuger",
+        "price": 6
+    }, 
+    {
+        "foodItemId": 8,
+        "foodItemName": "Spaghetti",
+        "price": 10.99
     }, 
 ]
