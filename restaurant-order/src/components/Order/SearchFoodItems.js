@@ -39,21 +39,21 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Searchfooditems = (props) => {
-    const { values, setValues } = props;
+    const { values, setValues, Orderedfooditems } = props;
 
     const [foodItems, setFoodItems] = useState(fooditemsdata);
     const [searchList, setSearchList] = useState(fooditemsdata);
     const [searchKey, setSearchKey] = useState('');
     const classes = useStyles();
 
-    useEffect (() =>{
+    useEffect(() => {
         let x = [...foodItems];
-        x = x.filter(y =>{
-            return y.foodItemName.toLocaleLowerCase().includes(searchKey.toLocaleLowerCase())
-        })
-
+        x = x.filter(y => {
+            return y.foodItemName.toLowerCase().includes(searchKey.toLocaleLowerCase())
+                && Orderedfooditems.every(item => item.foodItemId != y.foodItemId)
+        });
         setSearchList(x);
-    }, [searchKey])
+    }, [searchKey, Orderedfooditems])
   
     // useEffect(() => {
     //     createAPIEndpoint(ENDPIONTS.FOODITEM).fetchAll()

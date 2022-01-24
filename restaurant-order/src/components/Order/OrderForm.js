@@ -60,8 +60,7 @@ const Orderform = (props) => {
     //         .catch(err => console.log(err))
     // }, [])
 
-    
-    console.log(customerList);
+
     return (
         <Form>
           <Grid container>
