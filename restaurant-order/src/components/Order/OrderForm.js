@@ -38,7 +38,8 @@ const useStyles = makeStyles(theme => ({
 
 const Orderform = (props) => {
     
-    const {values, setValues, errors, setErrors, handleInputChange} = props;
+    const { values, setValues, errors, setErrors,
+        handleInputChange, resetFormControls } = props;
     const classes = useStyles();
 
     const customers = customersdata.map(item =>({
@@ -47,7 +48,7 @@ const Orderform = (props) => {
         })
     )
     const [customerList, setCustomerList] = useState(customers);
-    
+    const [orderId, setOrderId] = useState(0);
     // useEffect(() => {
     //     createAPIEndpoint(ENDPIONTS.CUSTOMER).fetchAll()
     //         .then(res => {
@@ -72,9 +73,29 @@ const Orderform = (props) => {
 
     }, [JSON.stringify(values.orderDetails)]);
 
+    const validateForm = () => {
+        let temp = {};
+        temp.customerId = values.customerId != 0 ? "" : "This field is required.";
+        temp.pMethod = values.pMethod != "none" ? "" : "This field is required.";
+        temp.orderDetails = values.orderDetails.length != 0 ? "" : "This field is required.";
+        setErrors({ ...temp });
+        return Object.values(temp).every(x => x === "");
+    }
+
+    const resetForm = () => {
+        resetFormControls();
+        setOrderId(0);
+    }
+
+    const submitOrder = e =>{
+        e.preventDefault();
+        if(validateForm()){
+
+        }
+    }
 
     return (
-        <Form>
+        <Form onSubmit={submitOrder}>
           <Grid container>
             <Grid item xs={6}>
                 <Input 
@@ -89,19 +110,24 @@ const Orderform = (props) => {
                         >#</InputAdornment>
                     }}
                 />
-                <Select label="Customer"
-                        name="customerId"
-                        onChange = {handleInputChange}
-                        options={customerList}
+                <Select
+                            label="Customer"
+                            name="customerId"
+                            value={values.customerId}
+                            onChange={handleInputChange}
+                            options={customerList}
+                            error={errors.customerId}
                 />
             </Grid>
             <Grid item xs={6}>
-                <Select label="Payment Method"
-                        name="pMethod"
-                        value={values.pMethod}
-                        options={pMethods}
-                        onChange = {handleInputChange}
-                />
+                <Select
+                            label="Payment Method"
+                            name="pMethod"
+                            value={values.pMethod}
+                            onChange={handleInputChange}
+                            options={pMethods}
+                            error={errors.pMethod}
+                        />
                 <Input 
                     disabled = {true}
                     label="Grand total"
