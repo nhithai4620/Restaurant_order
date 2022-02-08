@@ -52,6 +52,7 @@ const Orderform = (props) => {
     const [customerList, setCustomerList] = useState(customers);
     const [orderId, setOrderId] = useState(0);
     const [orderListVisibility, setOrderListVisibility] = useState(false);
+    const [notify, setNotify] = useState({ isOpen: false })
     // useEffect(() => {
     //     createAPIEndpoint(ENDPIONTS.CUSTOMER).fetchAll()
     //         .then(res => {
@@ -161,6 +162,7 @@ const Orderform = (props) => {
                     </MuiButton>
                     <MuiButton 
                         size="small"
+                        onClick={resetForm}
                         startIcon={<ReplayIcon/>}
                         >
                     </MuiButton>
@@ -180,7 +182,8 @@ const Orderform = (props) => {
                 title="List of Orders"
                 openPopup={orderListVisibility}
                 setOpenPopup={setOrderListVisibility}>
-                <OrderList/>
+                <OrderList
+                    {...{ setOrderId, setOrderListVisibility,resetFormControls,setNotify }} />
         </Popup>
         </>
     );

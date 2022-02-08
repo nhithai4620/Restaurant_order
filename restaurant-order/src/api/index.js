@@ -95,3 +95,33 @@ export const fooditemsdata = [
         "price": 10.99
     }, 
 ]
+
+export const orderlist = [
+    {
+        customerId: 2,
+        customerName:"Hoàng Minh",
+        deletedOrderItemIds: "",
+        gTotal: 13.48,
+        orderDetails: [{
+            foodItemId: 2,
+            foodItemName: "Chickend Tenders w/ fries",
+            foodItemPrice: 4.99,
+            orderDetailId: 0,
+            orderMasterId: 0,
+            quantity: 2,
+        },
+        {
+            foodItemId: 1,
+            foodItemName: "Chickend Tenders",
+            foodItemPrice: 3.5,
+            orderDetailId: 0,
+            orderMasterId: 0,
+            quantity: 1,
+        }
+        ],
+        length: 2,
+        orderMasterId: 0,
+        orderNumber: "875120",
+        pMethod: "Cash"
+    }
+]

@@ -35,14 +35,11 @@ const Order = () => {
         
         <Grid container spacing={2}>
             <Grid item xs={12}>
-                <OrderForm {...{values,setValues, errors,setErrors, handleInputChange}}/>
+                <OrderForm {...{values,setValues, errors,setErrors, handleInputChange, resetFormControls}}/>
             </Grid>
             <Grid item xs={6}>
                 <Searchfooditems
-                    {...{
-                        values,
-                        setValues
-                    }}
+                    {...{values,setValues}}
                 />
             </Grid>
             <Grid item xs={6}>
@@ -51,8 +48,7 @@ const Order = () => {
                 />
             </Grid>
         </Grid>
-    );        
-            
+    );              
 }
 
 export default Order;
